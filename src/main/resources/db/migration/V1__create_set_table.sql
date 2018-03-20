@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS `flash_cards_db`.`set` (
+  `id` INT(11) NOT NULL,
+  `name` VARCHAR(50) NOT NULL,
+  `desc` VARCHAR(100) NULL DEFAULT NULL,
+  `created_at` DATETIME NULL DEFAULT NULL,
+  PRIMARY KEY (`id`));
