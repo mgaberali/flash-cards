@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS `flash_cards_db`.`card` (
   `term` VARCHAR(100) NOT NULL,
   `definition` VARCHAR(200) NOT NULL,
   `created_at` DATETIME NULL DEFAULT NULL,
-  `image` VARCHAR(500) NULL DEFAULT NULL,
+  `image_url` VARCHAR(500) NULL DEFAULT NULL,
   `set_id` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `set_id` (`set_id` ASC),
