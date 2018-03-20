@@ -11,7 +11,7 @@ import java.util.Date;
 public class Card {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "term")
@@ -20,7 +20,7 @@ public class Card {
     @Column(name = "definition")
     private String definition;
 
-    @Column(name = "create_at")
+    @Column(name = "created_at")
     private Date createdAt;
 
     @Column(name = "image_url")
