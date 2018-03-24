@@ -9,6 +9,8 @@ import com.mg.flashcards.services.SetService;
 import com.mg.flashcards.utils.BeanMapperUtil;
 import com.mg.flashcards.web.requests.CreateSetRequest;
 import com.mg.flashcards.web.requests.UpdateSetRequest;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,8 @@ import java.util.Optional;
 
 @Service
 public class SetServiceImpl implements SetService{
+
+    private static Logger logger = LogManager.getLogger();
 
     @Autowired
     private SetRepository setRepository;
