@@ -11,7 +11,7 @@ import java.util.List;
 public interface CardService {
 
     void createCard(CreateCardRequest createCardRequest) throws AlreadyExistException, ResourceIsNotFoundException;
-    void updateCard(UpdateCardRequest updateCardRequest) throws AlreadyExistException, ResourceIsNotFoundException;
+    void updateCard(Integer cardId, UpdateCardRequest updateCardRequest) throws AlreadyExistException, ResourceIsNotFoundException;
     void deleteCard(Integer cardId) throws ResourceIsNotFoundException;
     List<CardDto> getAllCards(Integer setId) throws ResourceIsNotFoundException;
 }

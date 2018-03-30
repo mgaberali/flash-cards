@@ -51,11 +51,11 @@ public class CardServiceImpl implements CardService{
     }
 
     @Override
-    public void updateCard(UpdateCardRequest updateCardRequest) throws AlreadyExistException, ResourceIsNotFoundException {
+    public void updateCard(Integer cardId, UpdateCardRequest updateCardRequest) throws AlreadyExistException, ResourceIsNotFoundException {
 
-        Optional<Card> foundCard = cardRepository.findById(updateCardRequest.getId());
+        Optional<Card> foundCard = cardRepository.findById(cardId);
         if(!foundCard.isPresent()){
-            throw new ResourceIsNotFoundException("There is no card with id " + updateCardRequest.getId());
+            throw new ResourceIsNotFoundException("There is no card with id " + cardId);
         }
 
         Card anotherCardWithSameTerm = cardRepository.findBySetAndTerm(foundCard.get().getSet(), updateCardRequest.getTerm());

@@ -76,8 +76,8 @@ public class CardServiceTest {
         Mockito.when(cardRepository.findBySetAndTerm(set, card.getTerm())).thenReturn(card);
 
         // when
-        UpdateCardRequest updateCardRequest = createUpdateCardRequest(card2.getId(), "term1", "term1 def");
-        cardService.updateCard(updateCardRequest);
+        UpdateCardRequest updateCardRequest = createUpdateCardRequest("term1", "term1 def");
+        cardService.updateCard(card2.getId(), updateCardRequest);
     }
 
     @Test(expected = ResourceIsNotFoundException.class)
@@ -87,8 +87,8 @@ public class CardServiceTest {
         Mockito.when(cardRepository.findById(Mockito.anyInt())).thenReturn(Optional.ofNullable(null));
 
         // when
-        UpdateCardRequest updateCardRequest = createUpdateCardRequest(1, "term 1", "term 1 def");
-        cardService.updateCard(updateCardRequest);
+        UpdateCardRequest updateCardRequest = createUpdateCardRequest("term 1", "term 1 def");
+        cardService.updateCard(1, updateCardRequest);
     }
 
     @Test(expected = ResourceIsNotFoundException.class)
@@ -147,9 +147,8 @@ public class CardServiceTest {
         return createCardRequest;
     }
 
-    private UpdateCardRequest createUpdateCardRequest(Integer cardId, String term, String def) {
+    private UpdateCardRequest createUpdateCardRequest(String term, String def) {
         UpdateCardRequest updateCardRequest = new UpdateCardRequest();
-        updateCardRequest.setId(cardId);
         updateCardRequest.setTerm(term);
         updateCardRequest.setDefinition(def);
         return updateCardRequest;

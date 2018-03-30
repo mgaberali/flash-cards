@@ -20,7 +20,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("set")
-@Api(value = "/pet", description = "Set CRUD operations", tags = {"Set"})
+@Api(value = "/set", description = "Set CRUD operations", tags = {"Set"})
 @ApiResponses({@ApiResponse(code = 400, message = "", response = ErrorMessage.class)})
 public class SetController {
 

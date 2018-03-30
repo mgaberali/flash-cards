@@ -1,5 +1,6 @@
 package com.mg.flashcards.config;
 
+import com.mg.flashcards.web.controllers.RestControllersMarker;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.PathSelectors;
@@ -20,7 +21,7 @@ public class SwaggerConfig {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.any())
+                .apis(RequestHandlerSelectors.basePackage(RestControllersMarker.class.getPackage().getName()))
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(apiInfo());
