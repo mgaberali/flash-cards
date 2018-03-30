@@ -2,33 +2,26 @@ package com.mg.flashcards.services;
 
 import com.mg.flashcards.FlashCardsApplication;
 import com.mg.flashcards.entities.Set;
-import com.mg.flashcards.exceptions.AlreadyExistedException;
+import com.mg.flashcards.exceptions.AlreadyExistException;
 import com.mg.flashcards.exceptions.ResourceIsNotFoundException;
 import com.mg.flashcards.repositories.SetRepository;
-import com.mg.flashcards.services.impl.SetServiceImpl;
-import com.mg.flashcards.utils.BeanMapperUtil;
 import com.mg.flashcards.web.requests.CreateSetRequest;
 import com.mg.flashcards.web.requests.UpdateSetRequest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Date;
 import java.util.Optional;
 
-import static org.junit.Assert.*;
-import static org.hamcrest.Matchers.*;
-
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = FlashCardsApplication.class)
+@DirtiesContext
 public class SetServiceTest {
 
     @Autowired
@@ -37,8 +30,8 @@ public class SetServiceTest {
     @MockBean
     private SetRepository setRepository;
 
-    @Test(expected = AlreadyExistedException.class)
-    public void whenCreateSetWithAnExistingName() throws AlreadyExistedException {
+    @Test(expected = AlreadyExistException.class)
+    public void whenCreateSetWithAnExistingName() throws AlreadyExistException {
 
         // given
         Set set = createSet();

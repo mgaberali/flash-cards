@@ -1,6 +1,7 @@
 package com.mg.flashcards.entities;
 
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -8,6 +9,7 @@ import java.util.Date;
 @Entity
 @Table(name = "card")
 @Data
+@ToString
 public class Card {
 
     @Id

@@ -2,6 +2,7 @@ package com.mg.flashcards.repositories;
 
 import com.mg.flashcards.entities.Card;
 import com.mg.flashcards.entities.Set;
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,22 @@ public class CardRepositoryTest {
         assertThat(foundCards.size(), equalTo(3));
     }
 
+    @Test
+    public void whenFindBySetAndTerm_thenReturnCard(){
+
+        // given
+        Set set = createSet();
+        Set insertedSet = entityManager.persist(set);
+        Card card = createCard(insertedSet);
+        Card insertedCard = entityManager.persist(card);
+
+        // when
+        Card found = cardRepository.findBySetAndTerm(insertedSet, card.getTerm());
+
+        // then
+        assertThat(found, notNullValue());
+    }
+
     private List<Card> createListOfCards(Set set) {
         List<Card> cards = new ArrayList<>();
         for(int i = 1; i <= 3; i++){
@@ -54,6 +71,15 @@ public class CardRepositoryTest {
             cards.add(card);
         }
         return cards;
+    }
+
+    private Card createCard(Set set){
+        Card card = new Card();
+        card.setTerm("test term 1" );
+        card.setDefinition("definition of test term 1");
+        card.setCreatedAt(new Date());
+        card.setSet(set);
+        return  card;
     }
 
     private Set createSet() {

@@ -2,7 +2,7 @@ package com.mg.flashcards.services.impl;
 
 import com.mg.flashcards.dtos.SetDto;
 import com.mg.flashcards.entities.Set;
-import com.mg.flashcards.exceptions.AlreadyExistedException;
+import com.mg.flashcards.exceptions.AlreadyExistException;
 import com.mg.flashcards.exceptions.ResourceIsNotFoundException;
 import com.mg.flashcards.repositories.SetRepository;
 import com.mg.flashcards.services.SetService;
@@ -14,6 +14,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,14 +30,15 @@ public class SetServiceImpl implements SetService{
     private BeanMapperUtil beanMapperUtil;
 
     @Override
-    public void createSet(CreateSetRequest createSetRequest) throws AlreadyExistedException {
+    public void createSet(CreateSetRequest createSetRequest) throws AlreadyExistException {
 
         Set foundSet = setRepository.findByName(createSetRequest.getName());
         if(foundSet != null){
-            throw new AlreadyExistedException("Set with name of " + foundSet.getName() + " is already exists");
+            throw new AlreadyExistException("Set with name of " + foundSet.getName() + " is already exists");
         }
 
         Set set = beanMapperUtil.map(createSetRequest, Set.class);
+        set.setCreatedAt(new Date());
         setRepository.save(set);
     }
 
