@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `card` (
+CREATE TABLE IF NOT EXISTS `_card` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `term` VARCHAR(100) NOT NULL,
   `definition` VARCHAR(200) NOT NULL,
@@ -8,4 +8,4 @@ CREATE TABLE IF NOT EXISTS `card` (
   PRIMARY KEY (`id`),
   CONSTRAINT `card_ibfk_1`
     FOREIGN KEY (`set_id`)
-    REFERENCES `set` (`id`))
+    REFERENCES `_set` (`id`))

@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "card")
+@Table(name = "_card")
 @Data
 @ToString
 public class Card {

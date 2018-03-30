@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "set")
+@Table(name = "_set")
 @Data
 @ToString
 public class Set {
@@ -19,7 +19,7 @@ public class Set {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "desc")
+    @Column(name = "_desc")
     private String desc;
 
     @Column(name = "created_at")
