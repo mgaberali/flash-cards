@@ -29,4 +29,8 @@ public class Set {
     @OneToMany(mappedBy = "set", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Card> cards;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_email")
+    private User user;
+
 }

@@ -4,25 +4,23 @@ import lombok.Data;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "user")
+@Table(name = "user_roles")
 @Data
 @ToString
-public class User {
+public class UserRole {
 
     @Id
-    private String email;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-    @Column(name = "password")
-    private String password;
+    @Column(name = "role")
+    private String role;
 
-    @Column(name = "enabled")
-    private Boolean enabled;
-
-    @OneToMany(mappedBy = "set", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Card> cards;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_email")
+    private User user;
 
 }

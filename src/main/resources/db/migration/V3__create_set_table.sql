@@ -3,4 +3,6 @@ CREATE TABLE IF NOT EXISTS `_set` (
   `name` VARCHAR(50) NOT NULL,
   `_desc` VARCHAR(100) NULL DEFAULT NULL,
   `created_at` DATETIME NULL DEFAULT NULL,
-  PRIMARY KEY (`id`));
+  `user_email` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT fk_set_user_email FOREIGN KEY(user_email) REFERENCES `user`(email) );

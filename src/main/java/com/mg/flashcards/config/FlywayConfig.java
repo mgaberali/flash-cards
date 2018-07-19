@@ -16,7 +16,6 @@ public class FlywayConfig {
         Flyway flyway = new Flyway();
         flyway.setDataSource(dataSource);
         flyway.setLocations("classpath:db/migration");
-        flyway.clean();
         flyway.migrate();
         return flyway;
     }

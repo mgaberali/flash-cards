@@ -22,7 +22,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("card")
+@RequestMapping("api/card")
 @Api(value = "/card", description = "Card CRUD operations", tags = {"Card"})
 @ApiResponses({@ApiResponse(code = 400, message = "", response = ErrorMessage.class)})
 public class CardController {

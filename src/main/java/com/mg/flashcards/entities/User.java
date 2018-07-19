@@ -8,25 +8,21 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "_set")
+@Table(name = "user")
 @Data
 @ToString
-public class Set {
+public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private String email;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "password")
+    private String password;
 
-    @Column(name = "_desc")
-    private String desc;
+    @Column(name = "enabled")
+    private Boolean enabled;
 
-    @Column(name = "created_at")
-    private Date createdAt;
-
-    @OneToMany(mappedBy = "set", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Card> cards;
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<UserRole> userRoles;
 
 }

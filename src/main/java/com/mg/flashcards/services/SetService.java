@@ -10,8 +10,8 @@ import java.util.List;
 
 public interface SetService {
 
-    void createSet(CreateSetRequest createSetRequest) throws AlreadyExistException;
-    void deleteSet(Integer setId) throws ResourceIsNotFoundException;
-    void updateSet(Integer setId, UpdateSetRequest updateSetRequest) throws ResourceIsNotFoundException;
-    List<SetDto> getAllSets();
+    void createSet(CreateSetRequest createSetRequest, String userEmail) throws AlreadyExistException;
+    void deleteSet(Integer setId, String userEmail) throws ResourceIsNotFoundException;
+    void updateSet(Integer setId, UpdateSetRequest updateSetRequest, String userEmail) throws ResourceIsNotFoundException, AlreadyExistException;
+    List<SetDto> getAllSets(String userEmail);
 }

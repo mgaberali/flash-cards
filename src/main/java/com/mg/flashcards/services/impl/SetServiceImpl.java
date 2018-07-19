@@ -2,9 +2,11 @@ package com.mg.flashcards.services.impl;
 
 import com.mg.flashcards.dtos.SetDto;
 import com.mg.flashcards.entities.Set;
+import com.mg.flashcards.entities.User;
 import com.mg.flashcards.exceptions.AlreadyExistException;
 import com.mg.flashcards.exceptions.ResourceIsNotFoundException;
 import com.mg.flashcards.repositories.SetRepository;
+import com.mg.flashcards.repositories.UserRepository;
 import com.mg.flashcards.services.SetService;
 import com.mg.flashcards.utils.BeanMapperUtil;
 import com.mg.flashcards.web.requests.CreateSetRequest;
@@ -29,46 +31,66 @@ public class SetServiceImpl implements SetService{
     @Autowired
     private BeanMapperUtil beanMapperUtil;
 
-    @Override
-    public void createSet(CreateSetRequest createSetRequest) throws AlreadyExistException {
+    @Autowired
+    private UserRepository userRepository;
 
-        Set foundSet = setRepository.findByName(createSetRequest.getName());
+    @Override
+    public void createSet(CreateSetRequest createSetRequest, String userEmail) throws AlreadyExistException {
+
+        User user = userRepository.findByEmail(userEmail);
+
+        Set foundSet = setRepository.findByUserAndName(user, createSetRequest.getName());
         if(foundSet != null){
             throw new AlreadyExistException("Set with name of " + foundSet.getName() + " is already exists");
         }
 
         Set set = beanMapperUtil.map(createSetRequest, Set.class);
         set.setCreatedAt(new Date());
+        set.setUser(user);
+
         setRepository.save(set);
     }
 
     @Override
-    public void deleteSet(Integer setId) throws ResourceIsNotFoundException {
+    public void deleteSet(Integer setId, String userEmail) throws ResourceIsNotFoundException {
 
-        Optional<Set> foundSet = setRepository.findById(setId);
-        if(!foundSet.isPresent()){
+        User user = userRepository.findByEmail(userEmail);
+
+        Set foundSet = setRepository.findByUserAndId(user, setId);
+        if(foundSet == null){
             throw new ResourceIsNotFoundException("Set with id of " + setId + " is not exist");
         }
 
-        setRepository.delete(foundSet.get());
+        setRepository.delete(foundSet);
     }
 
     @Override
-    public void updateSet(Integer setId, UpdateSetRequest updateSetRequest) throws ResourceIsNotFoundException {
+    public void updateSet(Integer setId, UpdateSetRequest updateSetRequest, String userEmail) throws ResourceIsNotFoundException, AlreadyExistException {
 
-        Optional<Set> foundSet = setRepository.findById(setId);
-        if(!foundSet.isPresent()){
+        User user = userRepository.findByEmail(userEmail);
+
+        Set foundSet = setRepository.findByUserAndId(user, setId);
+        if(foundSet == null){
             throw new ResourceIsNotFoundException("Set with id of " + setId + " is not exist");
         }
 
-        beanMapperUtil.map(updateSetRequest, foundSet.get());
-        setRepository.save(foundSet.get());
+        Set setWithTheNewName = setRepository.findByUserAndName(user, updateSetRequest.getName());
+        if(setWithTheNewName != null){
+            throw new AlreadyExistException("Set with name of " + setWithTheNewName.getName() + " is already exists");
+        }
+
+        beanMapperUtil.map(updateSetRequest, foundSet);
+        foundSet.setUser(user);
+
+        setRepository.save(foundSet);
     }
 
     @Override
-    public List<SetDto> getAllSets() {
+    public List<SetDto> getAllSets(String userEmail) {
 
-        List<Set> setList = setRepository.findAll();
+        User user = userRepository.findByEmail(userEmail);
+
+        List<Set> setList = setRepository.findByUser(user);
         List<SetDto> setDtoList = beanMapperUtil.map(setList, SetDto.class);
 
         return setDtoList;

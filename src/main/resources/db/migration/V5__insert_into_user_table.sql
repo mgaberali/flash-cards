@@ -1,11 +1,2 @@
-CREATE TABLE IF NOT EXISTS `_card` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `term` VARCHAR(100) NOT NULL,
-  `definition` VARCHAR(200) NOT NULL,
-  `created_at` DATETIME NULL DEFAULT NULL,
-  `image_url` VARCHAR(500) NULL DEFAULT NULL,
-  `set_id` INT(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `card_ibfk_1`
-    FOREIGN KEY (`set_id`)
-    REFERENCES `_set` (`id`))
+INSERT INTO `user` VALUES('mohamed@gmail.com', '$2a$11$f8Sn3ZzPBSkUl2n7SzokCeKvFs9DB1.9SjgrVcdGkv/QVL0MCaGse', 1);
+INSERT INTO `user` VALUES('ahmed@gmail.com', '$2a$11$f8Sn3ZzPBSkUl2n7SzokCeKvFs9DB1.9SjgrVcdGkv/QVL0MCaGse', 1);
