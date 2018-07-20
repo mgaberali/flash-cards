@@ -1,15 +1,10 @@
 package com.mg.flashcards.entities;
 
-import lombok.Data;
-import lombok.ToString;
-
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "_card")
-@Data
-@ToString
 public class Card {
 
     @Id
@@ -31,4 +26,64 @@ public class Card {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "set_id")
     private Set set;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getTerm() {
+        return term;
+    }
+
+    public void setTerm(String term) {
+        this.term = term;
+    }
+
+    public String getDefinition() {
+        return definition;
+    }
+
+    public void setDefinition(String definition) {
+        this.definition = definition;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public Set getSet() {
+        return set;
+    }
+
+    public void setSet(Set set) {
+        this.set = set;
+    }
+
+    @Override
+    public String toString() {
+        return "Card{" +
+                "id=" + id +
+                ", term='" + term + '\'' +
+                ", definition='" + definition + '\'' +
+                ", createdAt=" + createdAt +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", set=" + set +
+                '}';
+    }
 }

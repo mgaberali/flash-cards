@@ -1,16 +1,10 @@
 package com.mg.flashcards.entities;
 
-import lombok.Data;
-import lombok.ToString;
-
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "user")
-@Data
-@ToString
 public class User {
 
     @Id
@@ -25,4 +19,45 @@ public class User {
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<UserRole> userRoles;
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public List<UserRole> getUserRoles() {
+        return userRoles;
+    }
+
+    public void setUserRoles(List<UserRole> userRoles) {
+        this.userRoles = userRoles;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", enabled=" + enabled +
+                ", userRoles=" + userRoles +
+                '}';
+    }
 }

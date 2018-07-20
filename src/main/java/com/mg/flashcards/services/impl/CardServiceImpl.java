@@ -9,8 +9,8 @@ import com.mg.flashcards.repositories.CardRepository;
 import com.mg.flashcards.repositories.SetRepository;
 import com.mg.flashcards.services.CardService;
 import com.mg.flashcards.utils.BeanMapperUtil;
-import com.mg.flashcards.web.requests.CreateCardRequest;
-import com.mg.flashcards.web.requests.UpdateCardRequest;
+import com.mg.flashcards.rest.requests.CreateCardRequest;
+import com.mg.flashcards.rest.requests.UpdateCardRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

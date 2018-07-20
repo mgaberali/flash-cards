@@ -1,6 +1,6 @@
 package com.mg.flashcards.config;
 
-import com.mg.flashcards.web.controllers.RestControllersMarker;
+import com.mg.flashcards.rest.controllers.RestControllersMarker;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.PathSelectors;

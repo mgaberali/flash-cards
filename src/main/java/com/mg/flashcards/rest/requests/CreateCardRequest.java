@@ -1,23 +1,25 @@
-package com.mg.flashcards.dtos;
+package com.mg.flashcards.rest.requests;
 
-import org.dozer.Mapping;
+import org.hibernate.validator.constraints.Length;
 
-public class CardDto {
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
-    private Integer id;
+
+public class CreateCardRequest {
+
+    @NotBlank
+    @Length(min = 1, max = 100)
     private String term;
+
+    @NotBlank
+    @Length(min = 1, max = 200)
     private String definition;
+
     private String imageUrl;
-    @Mapping("set.id")
+
+    @NotNull
     private Integer setId;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getTerm() {
         return term;
@@ -51,12 +53,10 @@ public class CardDto {
         this.setId = setId;
     }
 
-
     @Override
     public String toString() {
-        return "CardDto{" +
-                "id=" + id +
-                ", term='" + term + '\'' +
+        return "CreateCardRequest{" +
+                "term='" + term + '\'' +
                 ", definition='" + definition + '\'' +
                 ", imageUrl='" + imageUrl + '\'' +
                 ", setId=" + setId +

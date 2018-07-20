@@ -1,13 +1,12 @@
-package com.mg.flashcards.web.controllers;
+package com.mg.flashcards.rest.controllers;
 
 import com.mg.flashcards.dtos.CardDto;
-import com.mg.flashcards.dtos.SetDto;
 import com.mg.flashcards.exceptions.AlreadyExistException;
 import com.mg.flashcards.exceptions.ResourceIsNotFoundException;
 import com.mg.flashcards.services.CardService;
-import com.mg.flashcards.web.handlers.ErrorMessage;
-import com.mg.flashcards.web.requests.CreateCardRequest;
-import com.mg.flashcards.web.requests.UpdateCardRequest;
+import com.mg.flashcards.rest.handlers.ErrorMessage;
+import com.mg.flashcards.rest.requests.CreateCardRequest;
+import com.mg.flashcards.rest.requests.UpdateCardRequest;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;

@@ -17,7 +17,7 @@ public class LoggingAspect {
     @Pointcut("execution(* com.mg.flashcards.services.*.*(..))")
     public void servicesPointCut (){}
 
-    @Pointcut("execution(* com.mg.flashcards.web.controllers.*.*(..))")
+    @Pointcut("execution(* com.mg.flashcards.rest.controllers.*.*(..))")
     public void restControllersPointCut (){}
 
     @Around("servicesPointCut() || restControllersPointCut()")

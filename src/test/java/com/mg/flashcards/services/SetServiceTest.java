@@ -7,8 +7,8 @@ import com.mg.flashcards.exceptions.AlreadyExistException;
 import com.mg.flashcards.exceptions.ResourceIsNotFoundException;
 import com.mg.flashcards.repositories.SetRepository;
 import com.mg.flashcards.repositories.UserRepository;
-import com.mg.flashcards.web.requests.CreateSetRequest;
-import com.mg.flashcards.web.requests.UpdateSetRequest;
+import com.mg.flashcards.rest.requests.CreateSetRequest;
+import com.mg.flashcards.rest.requests.UpdateSetRequest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -20,7 +20,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Collections;
 import java.util.Date;
-import java.util.Optional;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

@@ -1,13 +1,12 @@
-package com.mg.flashcards.web.controllers;
+package com.mg.flashcards.rest.controllers;
 
 import com.mg.flashcards.dtos.SetDto;
 import com.mg.flashcards.exceptions.AlreadyExistException;
 import com.mg.flashcards.exceptions.ResourceIsNotFoundException;
 import com.mg.flashcards.services.SetService;
-import com.mg.flashcards.web.handlers.ErrorMessage;
-import com.mg.flashcards.web.requests.CreateSetRequest;
-import com.mg.flashcards.web.requests.UpdateCardRequest;
-import com.mg.flashcards.web.requests.UpdateSetRequest;
+import com.mg.flashcards.rest.handlers.ErrorMessage;
+import com.mg.flashcards.rest.requests.CreateSetRequest;
+import com.mg.flashcards.rest.requests.UpdateSetRequest;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

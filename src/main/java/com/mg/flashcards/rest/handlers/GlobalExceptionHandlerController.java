@@ -1,8 +1,7 @@
-package com.mg.flashcards.web.handlers;
+package com.mg.flashcards.rest.handlers;
 
-import com.mg.flashcards.exceptions.AlreadyExistException;
 import com.mg.flashcards.exceptions.BadRequestException;
-import com.mg.flashcards.web.controllers.RestControllersMarker;
+import com.mg.flashcards.rest.controllers.RestControllersMarker;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

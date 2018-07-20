@@ -1,4 +1,4 @@
-package com.mg.flashcards.web.controllers;
+package com.mg.flashcards.rest.controllers;
 
 public interface RestControllersMarker {
 }

@@ -1,15 +1,9 @@
 package com.mg.flashcards.entities;
 
-import lombok.Data;
-import lombok.ToString;
-
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "user_roles")
-@Data
-@ToString
 public class UserRole {
 
     @Id
@@ -23,4 +17,36 @@ public class UserRole {
     @JoinColumn(name = "user_email")
     private User user;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "UserRole{" +
+                "id=" + id +
+                ", role='" + role + '\'' +
+                ", user=" + user +
+                '}';
+    }
 }
