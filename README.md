@@ -22,6 +22,10 @@ These instructions will get you a copy of the project up and running on your loc
 $ mvn clean spring-boot:run
 ```
 
+### API Documentation
+All APIs are documented using Swagger 2.0 specification. After running the app you can access the documentation with following URL:
+http://localhost:8080/swagger-ui.html
+
 ### Running The Tests
 ```sh
 $ mvn clean test
