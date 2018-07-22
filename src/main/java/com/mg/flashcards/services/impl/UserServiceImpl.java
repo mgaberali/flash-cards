@@ -65,8 +65,9 @@ public class UserServiceImpl implements UserService{
         // send mail to activate the account
         if (createdActivateKey.getId() != null) {
             try {
-				emailService.send(userFromDataStore.getEmail(), WELCOME_EMAIL_SUBJECT, buildVerificationMail(createdActivateKey.getKey()));
+				emailService.send(savedUser.getEmail(), WELCOME_EMAIL_SUBJECT, buildVerificationMail(createdActivateKey.getKey()));
 			} catch (Exception e) {
+            	e.printStackTrace();
 				throw new Exception("there is error while sending the Activation mail");
 			}
         }
