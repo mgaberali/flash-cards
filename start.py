@@ -23,7 +23,10 @@ for string_value in root.findall('string'):
 if ip_string_not_found:
     print("There is no String resource represent ip address, or the key :"+IP_KEY+" has been changed ! Please contact someone or even better be proactive and find a fix, asd yalla fe eh!!!")
 
-import os
-os.system('"C:\\xampp\\mysql\\bin\\mysqld.exe"')
+import subprocess
+subprocess.Popen(["C:\\xampp\\mysql\\bin\\mysqld.exe"],
+                creationflags=subprocess.CREATE_NEW_PROCESS_GROUP)
+# import os
+# os.system('"C:\\xampp\\mysql\\bin\\mysqld.exe"')
 
 print("DONE\n Please start your db and move the token to MainActivity")
