@@ -26,7 +26,5 @@ if ip_string_not_found:
 import subprocess
 subprocess.Popen(["C:\\xampp\\mysql\\bin\\mysqld.exe"],
                 creationflags=subprocess.CREATE_NEW_PROCESS_GROUP)
-# import os
-# os.system('"C:\\xampp\\mysql\\bin\\mysqld.exe"')
 
-print("DONE\n Please start your db and move the token to MainActivity")
+print("Please move the token to MainActivity")
