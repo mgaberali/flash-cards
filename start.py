@@ -16,7 +16,9 @@ for string_value in root.findall('string'):
     if string_value.attrib["name"]==IP_KEY:
         # print(dir(string_value))
         # print(string_value.text)
-        string_value.text = string_value.text.replace(string_value.text[7:18], my_ip_address)
+        start = 7
+        end = string_value.text.find(':8080')
+        string_value.text = string_value.text.replace(string_value.text[7:end], my_ip_address)
         tree.write(FILE_LOCATION)
         ip_string_not_found = False
 
