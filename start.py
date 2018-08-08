@@ -29,6 +29,6 @@ import subprocess
 subprocess.Popen(["C:\\xampp\\mysql\\bin\\mysqld.exe"],
                 creationflags=subprocess.CREATE_NEW_PROCESS_GROUP)
 
-proc = subprocess.Popen('mvn clean spring-boot:run', stdin = subprocess.PIPE, stdout = subprocess.PIP
+proc = subprocess.Popen('mvn clean spring-boot:run', stdin = subprocess.PIPE, stdout = subprocess.PIPE)
 
 print("Please move the token to MainActivity")
