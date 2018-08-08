@@ -1,0 +1,29 @@
+import xml.etree.ElementTree as ET
+import socket
+FILE_LOCATION = "C:\Data\Coding\\flash-cards-android\\app\\src\main\\res\\values\strings.xml"
+IP_KEY = "flash_cards_api_url"
+tree = ET.parse(FILE_LOCATION)
+root = tree.getroot()
+
+#getting ip
+s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+s.connect(("8.8.8.8", 80))
+my_ip_address = s.getsockname()[0]
+s.close()
+
+ip_string_not_found = True
+for string_value in root.findall('string'):
+    if string_value.attrib["name"]==IP_KEY:
+        # print(dir(string_value))
+        # print(string_value.text)
+        string_value.text = string_value.text.replace(string_value.text[7:18], my_ip_address)
+        tree.write(FILE_LOCATION)
+        ip_string_not_found = False
+
+if ip_string_not_found:
+    print("There is no String resource represent ip address, or the key :"+IP_KEY+" has been changed ! Please contact someone or even better be proactive and find a fix, asd yalla fe eh!!!")
+
+import os
+os.system('"C:\\xampp\\mysql\\bin\\mysqld.exe"')
+
+print("DONE\n Please start your db and move the token to MainActivity")
