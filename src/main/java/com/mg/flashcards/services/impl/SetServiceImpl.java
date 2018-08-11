@@ -34,7 +34,7 @@ public class SetServiceImpl implements SetService{
     private UserRepository userRepository;
 
     @Override
-    public void createSet(CreateSetRequest createSetRequest, String userEmail) throws AlreadyExistException {
+    public Integer createSet(CreateSetRequest createSetRequest, String userEmail) throws AlreadyExistException {
 
         User user = userRepository.findByEmail(userEmail);
 
@@ -47,7 +47,8 @@ public class SetServiceImpl implements SetService{
         set.setCreatedAt(new Date());
         set.setUser(user);
 
-        setRepository.save(set);
+        Set savedSet= setRepository.save(set);
+        return savedSet.getId();
     }
 
     @Override

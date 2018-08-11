@@ -39,8 +39,8 @@ public class SetController {
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity addSet(@RequestBody @Valid CreateSetRequest createSetRequest, Principal principal) throws AlreadyExistException {
         String userEmail = principal.getName();
-        setService.createSet(createSetRequest, userEmail);
-        return new ResponseEntity(HttpStatus.CREATED);
+        Integer id = setService.createSet(createSetRequest, userEmail);
+        return new ResponseEntity(id, HttpStatus.CREATED);
     }
 
     @ApiOperation(value = "Update set")
