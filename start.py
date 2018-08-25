@@ -67,7 +67,7 @@ subprocess.Popen(["C:\\xampp\\mysql\\bin\\mysqld.exe"],
                 creationflags=subprocess.CREATE_NEW_PROCESS_GROUP)
 
 #############stopping java server############
-subprocess.Popen(["mvn", "clean", "spring-boot:stop"], shell=True, 
+subprocess.Popen(["mvn", "spring-boot:stop"], shell=True, 
                 creationflags=subprocess.CREATE_NEW_PROCESS_GROUP)
 #############starting java server############
 subprocess.Popen(["mvn", "clean", "spring-boot:run"], shell=True, 
