@@ -10,11 +10,21 @@ public class User {
     @Id
     private String email;
 
+    @Column(name = "first_name")
+    private String firstName;
+    
+    @Column(name = "last_name")
+    private String lastName;
+    
     @Column(name = "password")
     private String password;
 
     @Column(name = "enabled")
     private Boolean enabled;
+    
+    @OneToOne(mappedBy = "user")
+    private ActivationKey activationKey;
+    
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<UserRole> userRoles;
@@ -51,7 +61,31 @@ public class User {
         this.userRoles = userRoles;
     }
 
-    @Override
+	public ActivationKey getActivationKey() {
+		return activationKey;
+	}
+
+	public void setActivationKey(ActivationKey activationKey) {
+		this.activationKey = activationKey;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	@Override
     public String toString() {
         return "User{" +
                 "email='" + email + '\'' +
